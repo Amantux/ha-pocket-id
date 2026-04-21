@@ -25,6 +25,9 @@ export PORT="1411"
 
 if ! bashio::var.is_empty "${API_KEY}"; then
     export STATIC_API_KEY="${API_KEY}"
+    bashio::log.info "STATIC_API_KEY is set (${#API_KEY} chars)"
+else
+    bashio::log.warning "No api_key configured — API access will require a session token"
 fi
 
 bashio::log.info "APP_URL: ${APP_URL}"

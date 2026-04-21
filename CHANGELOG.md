@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.6.2] - 2026-04-21
+
+### Fixed
+- Add debug logging when `STATIC_API_KEY` is set so the key passthrough is visible in add-on logs
+- Add warning log when no `api_key` is configured
+
 ## [2.6.1] - 2026-04-21
 
 ### Added
