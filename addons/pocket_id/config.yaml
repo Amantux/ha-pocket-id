@@ -1,0 +1,25 @@
+name: "Pocket ID"
+description: "Lightweight OIDC provider for passkey/SSO authentication. Enables single sign-on for Home Assistant, Mealie, and other self-hosted services via Face ID, Touch ID, or security keys."
+version: "2.6.0"
+slug: "pocket_id"
+init: false
+startup: services
+boot: auto
+ingress: false
+url: "https://github.com/Amantux/ha-pocket-id"
+arch:
+  - amd64
+  - aarch64
+  - armv7
+ports:
+  1411/tcp: 1411
+ports_description:
+  1411/tcp: "Pocket ID web UI, admin panel, and OIDC discovery endpoints"
+map:
+  - data:rw
+options:
+  app_url: "http://homeassistant.local:1411"
+  encryption_key: ""
+schema:
+  app_url: str
+  encryption_key: password

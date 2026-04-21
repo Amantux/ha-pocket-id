@@ -1,0 +1,27 @@
+#!/usr/bin/with-contenv bashio
+# shellcheck shell=bash
+set -e
+
+bashio::log.info "Starting Pocket ID..."
+
+APP_URL="$(bashio::config 'app_url')"
+ENCRYPTION_KEY="$(bashio::config 'encryption_key')"
+
+if bashio::var.is_empty "${ENCRYPTION_KEY}"; then
+    bashio::log.warning "No encryption_key set — generating a random one and persisting it."
+    if [ ! -f /data/encryption_key ]; then
+        # Generate and store a stable random key so restarts don't invalidate sessions
+        head -c 32 /dev/urandom | base64 > /data/encryption_key
+    fi
+    ENCRYPTION_KEY=$(cat /data/encryption_key)
+fi
+
+export APP_URL="${APP_URL}"
+export ENCRYPTION_KEY="${ENCRYPTION_KEY}"
+export TRUST_PROXY="true"
+export DATA_DIR="/data"
+export PORT="1411"
+
+bashio::log.info "APP_URL: ${APP_URL}"
+
+exec /usr/bin/pocket-id
