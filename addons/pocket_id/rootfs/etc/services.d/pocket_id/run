@@ -27,7 +27,13 @@ if ! bashio::var.is_empty "${API_KEY}"; then
     export STATIC_API_KEY="${API_KEY}"
     bashio::log.info "STATIC_API_KEY is set (${#API_KEY} chars)"
 else
-    bashio::log.warning "No api_key configured — API access will require a session token"
+    # Auto-generate a stable api_key so headless API access works out of the box
+    if [ ! -f /data/api_key ]; then
+        bashio::log.warning "No api_key configured — generating a random one. Check /data/api_key to retrieve it."
+        printf 'pocket-id-%s' "$(head -c 24 /dev/urandom | base64 | tr -d '+/=' | head -c 32)" > /data/api_key
+    fi
+    export STATIC_API_KEY="$(cat /data/api_key)"
+    bashio::log.info "STATIC_API_KEY auto-generated (${#STATIC_API_KEY} chars) — override via 'api_key' option"
 fi
 
 bashio::log.info "APP_URL: ${APP_URL}"

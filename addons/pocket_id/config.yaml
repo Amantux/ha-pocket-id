@@ -1,6 +1,6 @@
 name: "Pocket ID"
 description: "Lightweight OIDC provider for passkey/SSO authentication. Enables single sign-on for Home Assistant, Mealie, and other self-hosted services via Face ID, Touch ID, or security keys."
-version: "2.6.2"
+version: "2.6.3"
 slug: "pocket_id"
 init: false
 startup: services

@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.6.3] - 2026-04-21
+
+### Added
+- Auto-generate a stable `STATIC_API_KEY` at first startup if `api_key` option is not set, persisted to `/data/api_key`
+
 ## [2.6.2] - 2026-04-21
 
 ### Fixed
