@@ -4,7 +4,7 @@
 
 ### Added
 - `api_key` option: exposes `STATIC_API_KEY` for headless/automated API access
-- MIT License
+- BSD 2-Clause License (matching upstream Pocket ID), no copyright line
 - "Add to Home Assistant" one-click install button in README
 - `OIDC_SIGNUP_ENABLED=true` documented so new users can self-register via OIDC
 

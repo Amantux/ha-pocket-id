@@ -50,7 +50,7 @@ See [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
-[MIT](LICENSE)
+[BSD 2-Clause](LICENSE) — matching upstream [Pocket ID](https://github.com/pocket-id/pocket-id)
 
 ## Credits
 
