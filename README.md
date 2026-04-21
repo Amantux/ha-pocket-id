@@ -3,11 +3,15 @@
 [![GitHub Release](https://img.shields.io/github/release/Amantux/ha-pocket-id.svg)](https://github.com/Amantux/ha-pocket-id/releases)
 [![License](https://img.shields.io/github/license/Amantux/ha-pocket-id.svg)](LICENSE)
 
+[![Add to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FAmantux%2Fha-pocket-id)
+
 A Home Assistant add-on that runs [Pocket ID](https://github.com/pocket-id/pocket-id) — a lightweight OIDC provider for passkey/SSO authentication.
 
 With Pocket ID, you can set up **single sign-on** across your self-hosted services (Mealie, etc.) using **Face ID, Touch ID, or a security key** — no passwords required.
 
 ## Installation
+
+Click the button above, or manually:
 
 1. Add this repository to your Home Assistant add-on store:
    - **Settings → Add-ons → Add-on Store → ⋮ → Repositories**
@@ -18,6 +22,7 @@ With Pocket ID, you can set up **single sign-on** across your self-hosted servic
 3. Configure:
    - `app_url`: the URL where Pocket ID will be accessible from your browser (e.g. `http://homeassistant.local:1411`)
    - `encryption_key`: optional — auto-generated and persisted on first run if left blank
+   - `api_key`: optional — sets a static API key (`STATIC_API_KEY`) for headless/automated API access
 
 4. Start the add-on. Open the web UI at port `1411` to create your admin account and register your first passkey.
 
@@ -27,7 +32,7 @@ In your Mealie add-on options, add these env vars:
 
 ```
 OIDC_AUTH_ENABLED=true
-OIDC_SIGNUP_ENABLED=false
+OIDC_SIGNUP_ENABLED=true
 OIDC_CONFIGURATION_URL=http://homeassistant.local:1411/.well-known/openid-configuration
 OIDC_CLIENT_ID=<client-id from Pocket ID>
 OIDC_CLIENT_SECRET=<client-secret from Pocket ID>
@@ -42,6 +47,10 @@ OIDC_USER_CLAIM=preferred_username
 ## Versions
 
 See [CHANGELOG.md](CHANGELOG.md).
+
+## License
+
+[MIT](LICENSE)
 
 ## Credits
 

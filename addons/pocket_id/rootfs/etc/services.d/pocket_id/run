@@ -6,6 +6,7 @@ bashio::log.info "Starting Pocket ID..."
 
 APP_URL="$(bashio::config 'app_url')"
 ENCRYPTION_KEY="$(bashio::config 'encryption_key')"
+API_KEY="$(bashio::config 'api_key')"
 
 if bashio::var.is_empty "${ENCRYPTION_KEY}"; then
     bashio::log.warning "No encryption_key set — generating a random one and persisting it."
@@ -21,6 +22,10 @@ export ENCRYPTION_KEY="${ENCRYPTION_KEY}"
 export TRUST_PROXY="true"
 export DATA_DIR="/data"
 export PORT="1411"
+
+if ! bashio::var.is_empty "${API_KEY}"; then
+    export STATIC_API_KEY="${API_KEY}"
+fi
 
 bashio::log.info "APP_URL: ${APP_URL}"
 
